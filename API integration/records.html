@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishak Agro - New Records</title>
+    <link rel="stylesheet" href="records.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-seedling"></i> Krishak Agro</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section id="oldRecordsSection" class="form-section">
+                <h2 class="section-title">Old Records</h2>
+                <table id="oldRecordsTable">
+                    <!-- Old records will be displayed here -->
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>सुखा चारा (KG)</th>
+                            <th>हरा चारा (KG)</th>
+                            <th>खल (KG)</th>
+                            <th>चूरी (KG)</th>
+                            <th>अन्य (KG)</th>
+                            <th>Krishak Feed (KG)</th>
+                            <th>दूध (Qt)</th>
+                            <th>FAT</th>
+                            <th>SNF</th>
+                            <th>गोबर</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Old records will be fetched and inserted here -->
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button id="backButton" class="backward-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div id="pageInfo" class="page-info"></div>
+                    <button id="forwardButton" class="forward-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <div class="container">
+                <section id="newRecordsSection" class="form-section">
+                    <h2 class="section-title">New Records</h2>
+                    <form id="newRecordsForm">
+                        <table>
+                            <tr>
+                                <td><label for="Date">Date:</label></td>
+                                <td>
+                                    <input type="date" id="Date" name="Date" required autocomplete="off" max="{{ today | date:'dd-MM-yyyy' }}">
+                                </td>
+                            </tr>                          
+                            <tr>
+                                <td><label for="sukha">सुखा चारा (KG):</label></td>
+                                <td><input type="number" id="sukha" name="sukha" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="haraChara">हरा चारा (KG):</label></td>
+                                <td><input type="number" id="haraChara" name="haraChara" required autocomplete="off">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="khal">खल (KG):</label></td>
+                                <td><input type="number" id="khal" name="khal" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="choori">चूरी (KG):</label></td>
+                                <td><input type="number" id="choori" name="choori" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="others">अन्य (KG):</label></td>
+                                <td><input type="number" id="others" name="others" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="krishakFeed">Krishak Feed (KG):</label></td>
+                                <td><input type="number" id="krishakFeed" name="krishakFeed" required
+                                        autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="doodh">दूध (Qt):</label></td>
+                                <td><input type="number" id="doodh" name="doodh" required autocomplete="off"></td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="fat">FAT:</label></td>
+                                <td><input type="text" id="fat" name="fat" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="snf">SNF:</label></td>
+                                <td><input type="text" id="snf" name="snf" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="gobar">गोबर:</label></td>
+                                <td><input type="text" id="gobar" name="gobar" required autocomplete="off"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="comment">Comment:</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <button type="button" id="submitButton"><i class="fas fa-arrow-right"></i> Submit</button>
+                        <button type="button" id="resetButton"><i class="fas fa-undo"></i> Reset</button>
+                        <a href="ka.html" class="fas fa-home home-button">Home</a>
+
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Krishak Agro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Popup message -->
+    <div class="popup" id="popupSuccess">
+        <p class="success">Your form is successfully submitted!</p>
+    </div>
+    <div class="popup" id="popupError">
+        <p class="error">Form submission failed. Please check your entries.</p>
+    </div>
+    <script src="records.js"></script>
+</body>
+
+</html>

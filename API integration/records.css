@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('https://cdn.pixabay.com/photo/2019/07/21/12/10/cow-4352623_1280.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: #008000;
+    /* Dark green header background */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    /* Add transition effect for smooth color change */
+}
+
+.header h1 {
+    font-size: 2em;
+}
+
+.header i {
+    margin-right: 5px;
+}
+
+.main {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    /* Fill remaining vertical space */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.section-title {
+    color: #008000;
+    /* Dark green section title */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-section {
+    background-color: rgba(230, 230, 230, 0.771);
+    /* Semi-transparent white background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    /* Center the form section */
+    margin-top: 40px;
+    /* Add some space from the header */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #008000;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #008000;
+}
+
+td:first-child {
+    padding-right: 10px;
+    /* Adjust the padding as needed */
+    text-align: left;
+    /* Align text to the left within the first column */
+    white-space: nowrap;
+    /* Prevent the date from wrapping onto multiple lines */
+}
+
+/* Table look for the last 5 records */
+#oldRecordsTable tbody tr:nth-last-child(-n+5) {
+    background-color: #f2f2f2;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="date"] {
+    width: calc(100% - 24px);
+    /* Adjusted width to accommodate border and padding */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #1abc9c;
+    /* Light green color on focus */
+}
+
+input[type="text"]::-webkit-inner-spin-button,
+input[type="text"]::-webkit-outer-spin-button {
+    display: none;
+}
+
+#submitButton,
+#resetButton {
+    background-color: #008000;
+    /* Dark green button background */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitButton:hover,
+#resetButton:hover {
+    background-color: #006400;
+}
+
+#submitButton i,
+#resetButton i {
+    margin-right: 5px;
+    /* Space between icon and text */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    /* Push the footer to the bottom */
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+}
+
+.popup.auto-fade {
+    /* Add CSS for auto-fade effect */
+    animation: fadeOut 1s forwards;
+    /* Use CSS animation for fade-out effect */
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.success {
+    color: #008000;
+    /* Dark green color for success message */
+}
+
+.error {
+    color: #ff0000;
+    /* Red color for error message */
+}
+
+/* New CSS for backward and forward buttons and page info */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.page-info {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    /* Text color */
+    background-color: #008000;
+    /* Background color */
+    padding: 12px 24px;
+    /* Adjust padding as needed */
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+.backward-btn {
+    background-color: #008000;
+    /* Dark green button background */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forward-btn {
+    background-color: #008000;
+    /* Dark green button background */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#resetButton {
+    margin-right: 705px;
+    /* Adjust margin between buttons */
+}
+
+.home-button {
+    background-color: #008000;
+    /* Dark green button background */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    /* Remove underline from anchor tag */
+}
+
+.home-button:hover {
+    background-color: #006400;
+}

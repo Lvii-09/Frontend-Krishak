@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    /* Remove default body margin */
+    min-height: 100vh;
+    /* Ensure the body fills the viewport */
+    display: flex;
+    flex-direction: column;
+    /* Arrange children vertically */
+    background-image: url('https://cdn.pixabay.com/photo/2019/07/21/12/10/cow-4352623_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background-color: #008000;
+    /* Dark green header background */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    /* Add transition effect for smooth color change */
+}
+
+.header h1 {
+    font-size: 2em;
+}
+
+.header i {
+    margin-right: 5px;
+}
+
+/* Main */
+.main {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    /* Fill remaining vertical space */
+}
+
+#status {
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.section-title {
+    color: #008000;
+    /* Dark green section title */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-section {
+    background-color: rgba(163, 163, 163, 0.8);
+    /* Slightly transparent white */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+    margin-bottom: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="tel"],
+input[type="text"],
+input[type="date"] {
+    width: calc(100% - 24px);
+    /* Adjusted width to accommodate border and padding */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #008000;
+    /* Dark green button background */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006400;
+    /* Dark green button background on hover */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Register link */
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #008000;
+    /* Dark green color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #006400;
+    /* Dark green color on hover */
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup/Login Form</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-seedling"></i> Krishak Agro</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="wrapper">
+            <div class="title-text">
+                <div class="title login">Login Form</div>
+                <div class="title signup">Signup Form</div>
+            </div>
+            <div class="form-container">
+                <div class="slide-controls">
+                    <input type="radio" name="slide" id="login" checked>
+                    <input type="radio" name="slide" id="signup">
+                    <label for="login" class="slide login">Login</label>
+                    <label for="signup" class="slide signup">Signup</label>
+                    <div class="slider-tab"></div>
+                </div>
+                <div class="form-inner">
+                    <form action="#" class="login">
+                        <div class="field">
+                            <input type="tel" id="login-phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                            <span toggle="login-password" class="eye toggle-password"><i class="fa fa-eye"></i></span>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <input type="submit" value="Login" id="login-submit">
+                        </div>
+                        <div class="signup-link">Not a member? <a href="#" id="signup-now-link">Signup now</a></div>
+                    </form>
+
+                    <form action="#" class="signup">
+                        <div class="field">
+                            <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" id="signup-password" placeholder="Password" required>
+                            <span toggle="signup-password" class="eye toggle-password"><i class="fa fa-eye"></i></span>
+                        </div>
+                        <div class="field">
+                            <input type="password" id="signup-confirm-password" placeholder="Confirm password" required>
+                            <span toggle="signup-confirm-password" class="eye toggle-password"><i
+                                    class="fa fa-eye"></i></span>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <input type="submit" value="Signup" id="signup-submit">
+                        </div>
+                        <div class="error-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Krishak Agro. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="login.js"></script>
+</body>
+
+</html>
