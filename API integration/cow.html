@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishak Agro - Cow Details</title>
+    <link rel="stylesheet" href="cow.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-seedling"></i> Krishak Agro</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section id="cattleSection" class="form-section">
+                <h2 class="section-title">Registered Cattle</h2>
+                <table id="cattleTable">
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Tag Id</th>
+                            <th>Species</th>
+                            <th>Deworming</th>
+                            <th>Days In Milk</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Old records will be fetched and inserted here -->
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button id="backButton" class="backward-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div id="pageInfo" class="page-info"></div>
+                    <button id="forwardButton" class="forward-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section id="cowDetailsSection" class="form-section">
+                <h2 class="section-title">Cow Details</h2>
+                <form id="cowDetailsForm">
+                    <label for="tagId">Tag Id:</label>
+                    <input type="text" id="tagId" name="tagId" placeholder="Enter tag id" required>
+
+                    <label for="species">Species:</label>
+                    <select id="species" name="species" required>
+                        <option value="" disabled selected>Select species</option>
+                        <option value="Buffalo">Buffalo</option>
+                        <option value="Cow">Cow</option>
+                    </select>
+
+                    <label for="deworming">Deworming:</label>
+                    <div id="deworming">
+                        <input type="radio" id="yes" name="deworming" value="Yes" required>
+                        <label for="yes">Yes</label>
+                        <input type="radio" id="no" name="deworming" value="No">
+                        <label for="no">No</label>
+                    </div>
+
+                    <label for="daysInMilk">Days in Milk:</label>
+                    <input type="number" id="daysInMilk" name="daysInMilk" placeholder="Enter days in milk">
+
+                    <button type="submit"><i class="fas fa-arrow-right"></i>Submit</button>
+                    <button type="button" id="resetButton"><i class="fas fa-undo"></i> Reset</button>
+                    <a href="ka.html" class="home-button"><i class="fas fa-home"></i></a>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Krishak Agro. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="cow.js"></script>
+</body>
+
+</html>

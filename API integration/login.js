@@ -98,11 +98,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const raw = JSON.stringify({
             "phone_number": phoneNumber,
-            "password": password,
-            "confirm_password": confirmPassword
+            "password": password
+            // "confirm_password": confirmPassword
         });
 
-        fetch('http://localhost:8080/sign-up', {
+        fetch('http://51.20.67.103:8080/sign-up', {
             method: 'POST',
             headers: myHeaders,
             body: raw
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "password": password
         });
 
-        fetch('http://localhost:8080/log-in', {
+        fetch('http://51.20.67.103:8080/log-in', {
             method: 'POST',
             headers: myHeaders,
             body: raw
@@ -168,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
         errorMessage.textContent = "";
     };
 
-
     // Event listener for signup submit button
     document.getElementById("signup-submit").addEventListener("click", function (event) {
         event.preventDefault(); // Prevent form submission
@@ -180,4 +179,16 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Prevent form submission
         handleLogin(event); // Call the handleLogin function and pass the event object
     });
+
+    // Function to reset form and clear error messages on page load
+    const resetPage = () => {
+        loginForm.style.marginLeft = "0%";
+        loginText.style.marginLeft = "0%";
+        sliderTab.style.transform = "translateX(0%)";
+        errorMessage.textContent = "";
+        loginForm.reset(); // Reset the form fields
+    };
+
+    // Call resetPage function when the window is fully loaded
+    window.onload = resetPage;
 });

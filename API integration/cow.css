@@ -6,24 +6,19 @@
 
 .header {
     background-color: #008000;
-    /* Dark green header background */
     color: #fff;
     padding: 20px 0;
     text-align: center;
     transition: background-color 0.3s ease;
-    /* Add transition effect for smooth color change */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
-    /* Remove default body margin */
     min-height: 100vh;
-    /* Ensure the body fills the viewport */
     display: flex;
     flex-direction: column;
-    /* Arrange children vertically */
     background-image: url('https://cdn.pixabay.com/photo/2019/07/21/12/10/cow-4352623_1280.jpg');
     background-size: cover;
     background-position: center;
@@ -38,6 +33,12 @@ body {
     margin-right: 5px;
 }
 
+.main {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -46,14 +47,17 @@ body {
 
 /* Form section */
 .form-section {
-    background-color: rgba(163, 163, 163, 0.8);
-    /* Slightly transparent white */
+    background-color: rgba(230, 230, 230, 0.771);
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    /* Soft shadow */
-    margin-bottom: 40px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 40px;
+}
+
+/* Centering section titles */
+.form-section .section-title {
+    text-align: center;
 }
 
 /* Form label */
@@ -62,15 +66,41 @@ label {
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
-    /* Dark gray color */
 }
 
-/* Form input fields */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #008000;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #008000;
+}
+
+td:first-child {
+    padding-right: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#cattleTable tbody tr:nth-last-child(-n+5) {
+    background-color: #f2f2f2;
+}
+
 input[type="number"],
 input[type="text"],
 input[type="tel"],
 select {
-    width: 100%;
+    width: calc(100% - 24px);
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -83,25 +113,15 @@ input[type="text"]:focus,
 input[type="tel"]:focus,
 select:focus {
     border-color: #1abc9c;
-    /* Light green color on focus */
 }
 
-/* Registered status */
-.status-label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
-.status-label input[type="checkbox"] {
-    margin-right: 10px;
+input[type="text"]::-webkit-inner-spin-button,
+input[type="text"]::-webkit-outer-spin-button {
+    display: none;
 }
 
 button {
     background-color: #008000;
-    /* Dark green button background */
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -119,7 +139,6 @@ button i {
 
 #resetButton {
     background-color: #008000;
-    /* Dark green button background */
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -133,12 +152,10 @@ button i {
 
 #resetButton i {
     margin-right: 5px;
-    /* Space between icon and text */
 }
 
 #resetButton {
     margin-right: 775px;
-    /* Adjust margin between buttons */
 }
 
 .home-button {
@@ -155,10 +172,85 @@ button i {
     background-color: #006400;
 }
 
-/* Footer */
+#deworming label {
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: normal;
+    color: #333;
+}
+
 .footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+}
+
+.popup.auto-fade {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.success {
+    color: #008000;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.page-info {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #008000;
+    padding: 12px 24px;
+    border-radius: 5px;
+}
+
+.backward-btn {
+    background-color: #008000;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forward-btn {
+    background-color: #008000;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

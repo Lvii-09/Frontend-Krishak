@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('cowDetailsForm');
+    const form = document.getElementById('farmerDetailsForm');
+    const resetButton = document.getElementById('resetButton'); // Define the resetButton variable
 
     resetButton.addEventListener('click', () => form.reset());
+
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -13,20 +15,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function validateForm() {
-        const tagId = document.getElementById('tagId').value;
-        const farmerName = document.getElementById('farmerName').value;
+        const name = document.getElementById('farmerName').value;
         const address = document.getElementById('address').value;
-        const mobileNumber = document.getElementById('mobileNumber').value;
-        const species = document.getElementById('species').value;
-        const deworming = document.querySelector('input[name="deworming"]:checked');
-
-        // Tag ID validation (Alphanumeric)
-        if (!/^[A-Za-z0-9 ]+$/.test(tagId)) {
-            return false;
-        }
+        const phone_number = document.getElementById('mobileNumber').value;
 
         // Farmer's Name validation (Alphabetic)
-        if (!/^[A-Za-z ]+$/.test(farmerName)) {
+        if (!/^[A-Za-z ]+$/.test(name)) {
             return false;
         }
 
@@ -36,23 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Mobile Number validation (10-digit starting with 6-9)
-        if (!/^[6-9]\d{9}$/.test(mobileNumber)) {
-            return false;
-        }
-
-        // Species validation (Not empty)
-        if (species === '') {
-            return false;
-        }
-
-        // Deworming validation (At least one option selected)
-        if (!deworming) {
-            return false;
-        }
-
-        // Optional: Days in Milk validation (Integer and non-negative)
-        const daysInMilk = document.getElementById('daysInMilk').value;
-        if (daysInMilk !== '' && (!Number.isInteger(Number(daysInMilk)) || Number(daysInMilk) < 0)) {
+        if (!/^[6-9]\d{9}$/.test(phone_number)) {
             return false;
         }
 
@@ -62,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function submitFormData() {
         const userExternalId = localStorage.getItem('userExternalId');
         if (!userExternalId) {
-            alert("Error: User ID is missing.");
+            alert("Error: User ID is missing. Please log in again.");
+            window.location.href = 'login.html'; // Redirect to login page
             return;
         }
 
@@ -70,20 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
         myHeaders.append("X-User-Id", userExternalId);
         myHeaders.append("Content-Type", "application/json");
 
-        const dewormingValue = document.querySelector('input[name="deworming"]:checked').value;
-        const dewormingBoolean = dewormingValue === "Yes"; // Convert "Yes" to true, otherwise false
-
         const raw = JSON.stringify({
-            tagId: document.getElementById('tagId').value,
-            species: document.getElementById('species').value,
-            deworming: dewormingBoolean, // Use the converted boolean value
-            daysInMilk: document.getElementById('daysInMilk').value,
-            farmerName: document.getElementById('farmerName').value,
+            name: document.getElementById('farmerName').value,
             address: document.getElementById('address').value,
-            phoneNumber: document.getElementById('mobileNumber').value
+            phone_number: document.getElementById('mobileNumber').value,
+            status: "Registered" // Always set status to "Registered"
         });
 
-        fetch('http://localhost:8080/info/cattle', {
+        fetch('http://51.20.67.103:8080/sign-in', {
             method: 'POST',
             headers: myHeaders,
             body: raw
@@ -97,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then((result) => {
                 // Show success message
                 alert("Farmer registered successfully!");
-                // Redirect to ka.html after showing the message
+                // Redirect to cow.html after showing the message
                 window.location.href = 'ka.html';
             })
             .catch((error) => {
@@ -105,4 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert("Error: Data was not sent to backend.");
             });
     }
+
+    // Reset form and status on page load or navigation back to this page
+    window.addEventListener('load', function () {
+        form.reset(); // Reset the form fields
+        document.getElementById('status').textContent = ''; // Clear status message
+    });
 });

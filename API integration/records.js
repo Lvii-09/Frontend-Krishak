@@ -1,5 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Constants for DOM elements and settings
+    // Function to get query parameter from URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Example usage to get CATTLE_ID
+    const cattleId = getQueryParam('CATTLE_ID');
+    if (!cattleId) {
+        alert("Error: CATTLE_ID is missing. Please go back and select a cattle.");
+        window.location.href = 'cow.html';
+        return;
+    }
+
+    // Now you can use 'cattleId' in your code
+    console.log('Selected Cattle ID:', cattleId);
+
     const form = document.getElementById('newRecordsForm');
     const submitButton = document.getElementById('submitButton');
     const oldRecordsTable = document.getElementById('oldRecordsTable').getElementsByTagName('tbody')[0];
@@ -44,34 +60,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 comment: document.getElementById('comment').value
             };
 
+            const url = new URL('http://51.20.67.103:8080/stat/daily');
+            url.searchParams.append('cattleId', cattleId); // Append cattleId as query parameter    
+
             const myHeaders = new Headers();
             myHeaders.append("USER_EXTERNAL_ID", localStorage.getItem('userExternalId'));
             myHeaders.append("Content-Type", "application/json");
 
-            fetch('http://localhost:8080/stat/daily', {
+            console.log('Data to be sent:', data);
+
+            fetch(url, {  // Use the url variable that has the cattleId appended as query parameter
                 method: 'POST',
                 headers: myHeaders,
                 body: JSON.stringify(data)
             })
                 .then(response => {
                     if (response.ok) {
-                        const newRow = document.createElement('tr');
-                        newRow.innerHTML = `
-                        <td>${data.date}</td>
-                        <td>${data.dry_bait}</td>
-                        <td>${data.green_bait}</td>
-                        <td>${data.khal}</td>
-                        <td>${data.churi}</td>
-                        <td>${data.rest}</td>
-                        <td>${data.krishak_feed}</td>
-                        <td>${data.milk}</td>
-                        <td>${data.fat}</td>
-                        <td>${data.snf}</td>
-                        <td>${data.gobar}</td>
-                        <td>${data.comment}</td>
-                    `;
-                        oldRecordsTable.appendChild(newRow);
-
+                        displayOldRecords(currentPage); // Refresh the records table
                         displaySuccessMessage();
                         form.reset();
                     } else {
@@ -101,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const myHeaders = new Headers();
         myHeaders.append("USER_EXTERNAL_ID", localStorage.getItem('userExternalId'));
 
-        fetch("http://localhost:8080/stat/daily/fetch", {
+        fetch(`http://51.20.67.103:8080/stat/daily/fetch?cattleId=${cattleId}`, {
             method: "GET",
             headers: myHeaders,
             redirect: "follow"
@@ -111,23 +116,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 oldRecordsTable.innerHTML = '';
                 for (let i = startIndex; i < Math.min(startIndex + pageSize, result.data.length); i++) {
                     const item = result.data[i];
-                    // Check if date is null or undefined
                     const datePart = item.date ? item.date.split('T')[0] : '';
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
-                    <td>${datePart}</td>
-                    <td>${item.dryBait}</td>
-                    <td>${item.greenBait}</td>
-                    <td>${item.khal}</td>
-                    <td>${item.churi}</td>
-                    <td>${item.rest}</td>
-                    <td>${item.krishakFeed}</td>
-                    <td>${item.milk}</td>
-                    <td>${item.fat}</td>
-                    <td>${item.snf}</td>
-                    <td>${item.gobar}</td>
-                    <td>${item.comment}</td>
-                `;
+                        <td>${datePart}</td>
+                        <td>${item.dryBait}</td>
+                        <td>${item.greenBait}</td>
+                        <td>${item.khal}</td>
+                        <td>${item.churi}</td>
+                        <td>${item.rest}</td>
+                        <td>${item.krishakFeed}</td>
+                        <td>${item.milk}</td>
+                        <td>${item.fat}</td>
+                        <td>${item.snf}</td>
+                        <td>${item.gobar}</td>
+                        <td>${item.comment}</td>
+                    `;
                     oldRecordsTable.appendChild(newRow);
                 }
             })
@@ -154,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const myHeaders = new Headers();
         myHeaders.append("USER_EXTERNAL_ID", localStorage.getItem('userExternalId'));
 
-        fetch("http://localhost:8080/stat/daily/fetch", {
+        fetch(`http://51.20.67.103:8080/stat/daily/fetch?cattleId=${cattleId}`, {
             method: "GET",
             headers: myHeaders,
             redirect: "follow"
