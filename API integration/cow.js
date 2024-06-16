@@ -79,15 +79,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
-            })
-            .then((result) => {
+                // No need to parse response.json() here if you don't need to access the JSON body
+                console.log('Submit Form Data Result:', response.statusText); // Log response status text
                 alert("Cattle registered successfully!");
                 window.location.href = 'ka.html';
             })
             .catch((error) => {
-                console.error(error);
-                alert("Error: Data was not sent to backend.");
+                console.error('Submit Form Data Error:', error);
+                alert("Error: Data didn't get updated.");
+                // Log response details on error if needed
+                if (error.response) {
+                    console.log('Error Response Details:', error.response);
+                }
             });
     }
 
@@ -108,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     const item = result[i];
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
-                        <td>${i + 1}</td>
-                        <td>${item.tagId}</td>
-                        <td>${item.species}</td>
-                        <td>${item.deworming ? 'Yes' : 'No'}</td>
-                        <td>${item.daysInMilk}</td>
-                        <td><button class="viewBtn" data-id="${item.id}">View</button></td>
-                    `;
+                    <td>${i + 1}</td>
+                    <td>${item.tagId}</td>
+                    <td>${item.species}</td>
+                    <td>${item.deworming ? 'Yes' : 'No'}</td>
+                    <td>${item.daysInMilk}</td>
+                    <td><button class="viewBtn" data-id="${item.id}">View</button></td>
+                `;
                     oldRecordsTable.appendChild(newRow);
                 }
 
@@ -128,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                 });
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error('Display Old Cattle Error:', error));
     }
 
     function updatePageInfo() {
@@ -165,6 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     updatePageInfo();
                 }
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error('Navigate Forward Error:', error));
     }
 });
