@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 // No need to parse response.json() here if you don't need to access the JSON body
                 console.log('Submit Form Data Result:', response.statusText); // Log response status text
                 alert("Cattle registered successfully!");
-                window.location.href = 'ka.html';
+                // window.location.href = 'ka.html';
             })
             .catch((error) => {
                 console.error('Submit Form Data Error:', error);
-                alert("Error: Data didn't get updated.");
+                alert("Cattle is already registered");
                 // Log response details on error if needed
                 if (error.response) {
                     console.log('Error Response Details:', error.response);
