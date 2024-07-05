@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <link rel="stylesheet" href="internal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <header class="header">
-        <div class="container">
-            <h1><i class="fas fa-seedling"></i> Krishak Agro</h1>
+        <div class="container header-content">
+            <img src="logo.png" alt="Krishak Agro Logo" class="logo">
+            <h1>Krishak Agro</h1>
         </div>
     </header>
 
@@ -20,13 +23,28 @@
                 <h2 class="section-title">Farmer's Details</h2>
                 <form id="farmerDetailsForm">
                     <label for="farmerName">Farmer's Name:</label>
-                    <input type="text" id="farmerName" name="farmerName" placeholder="Enter farmer's name" pattern="[A-Za-z ]+" title="Alphabets and spaces only" required>
+                    <input type="text" id="farmerName" name="farmerName" placeholder="Enter farmer's name"
+                        pattern="[A-Za-z ]+" required>
 
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" placeholder="Enter address" pattern="[A-Za-z0-9 ]+" title="Alphanumeric characters and spaces only" required>
+                    <label for="district">District:</label>
+                    <input type="text" id="district" name="district" placeholder="Enter district"
+                        pattern="[A-Za-z0-9 ]+" required>
+
+                    <label for="tehsil">Tehsil:</label>
+                    <input type="text" id="tehsil" name="tehsil" placeholder="Enter tehsil" pattern="[A-Za-z0-9 ]+"
+                        required>
+
+                    <label for="panchayat">Panchayat:</label>
+                    <input type="text" id="panchayat" name="panchayat" placeholder="Enter panchayat"
+                        pattern="[A-Za-z0-9 ]+" required>
+
+                    <label for="village">Village:</label>
+                    <input type="text" id="village" name="village" placeholder="Enter village" pattern="[A-Za-z0-9 ]+"
+                        required>
 
                     <label for="mobileNumber">Mobile No.:</label>
-                    <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" pattern="[0-9]{10}" title="Numbers only, 10 digits" required>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number"
+                        pattern="[0-9]{10}" required>
 
                     <div class="status-label">
                         <input type="checkbox" id="status" name="status" checked disabled>
@@ -48,4 +66,5 @@
     </footer>
     <script src="internal.js"></script>
 </body>
+
 </html>

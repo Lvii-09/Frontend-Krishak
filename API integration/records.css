@@ -4,6 +4,21 @@
     box-sizing: border-box;
 }
 
+img {
+    width: 5%;
+    height: 5%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content img {
+    margin-right: 20px;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url('https://cdn.pixabay.com/photo/2019/07/21/12/10/cow-4352623_1280.jpg');

@@ -4,6 +4,21 @@
     box-sizing: border-box;
 }
 
+img {
+    width: 5%;
+    height: 5%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content img {
+    margin-right: 20px;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
@@ -39,10 +54,6 @@ body {
 
 .header h1 {
     font-size: 2em;
-}
-
-.header i {
-    margin-right: 5px;
 }
 
 /* Main */

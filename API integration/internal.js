@@ -23,7 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
-        if (!/^[A-Za-z0-9 ]+$/.test(address)) {
+        if (!/^[A-Za-z0-9 ]+$/.test(district)) {
+            return false;
+        }
+
+        if (!/^[A-Za-z0-9 ]+$/.test(tehsil)) {
+            return false;
+        }
+
+        if (!/^[A-Za-z0-9 ]+$/.test(panchayat)) {
+            return false;
+        }
+
+        if (!/^[A-Za-z0-9 ]+$/.test(village)) {
             return false;
         }
 
@@ -41,7 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const formData = {
             name: document.getElementById('farmerName').value,
-            address: document.getElementById('address').value,
+            district: document.getElementById('district').value,
+            tehsil: document.getElementById('tehsil').value,
+            panchayat: document.getElementById('panchayat').value,
+            village: document.getElementById('village').value,
             phone_number: document.getElementById('mobileNumber').value,
             status: "Registered"
         };
