@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const phoneNumberInput = document.getElementById('phoneNumber');
     const statusElement = document.getElementById('status');
 
+    // Function to handle errors and update status
+    function handleError(error) {
+        statusElement.textContent = error.message;
+        console.error(error);
+    }
+
     // Add event listener to the form submission
     phoneNumberForm.addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent default form submission
@@ -20,14 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const requestOptions = {
-            method: "GET",
-            redirect: "follow"
-        };
-
         const url = `http://51.20.67.103:8080/info/user?phoneNumber=${phoneNumber}`;
 
-        fetch(url, requestOptions)
+        fetch(url)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Farmer is not registered');
@@ -39,14 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('userExternalId', userExternalId);
 
                 if (data.status === 'Registered') {
-                    window.location.href = 'cow.html';
+                    window.location.href = 'cow.html'; // Redirect to cow.html if registered
                 } else {
                     statusElement.textContent = `Farmer is ${data.status}`;
                 }
             })
             .catch(error => {
-                statusElement.textContent = error.message;
-                console.error(error);
+                handleError(error);
             });
     });
 
