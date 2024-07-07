@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function validateForm() {
         const name = document.getElementById('farmerName').value;
-        const address = document.getElementById('address').value;
+        const district = document.getElementById('district').value;
+        const tehsil = document.getElementById('tehsil').value;
+        const panchayat = document.getElementById('panchayat').value;
+        const village = document.getElementById('village').value;
         const phone_number = document.getElementById('mobileNumber').value;
 
         if (!/^[A-Za-z ]+$/.test(name)) {
