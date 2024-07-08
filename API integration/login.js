@@ -40,7 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const togglePasswordVisibility = (passwordFieldId, eyeIcon) => {
+        console.log("Password field ID:", passwordFieldId);
         const passwordField = document.getElementById(passwordFieldId);
+        console.log("Password field:", passwordField);
         if (!passwordField) {
             console.error("Password field not found!");
             return;
@@ -57,8 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Attach event listeners to toggle password visibility
     document.querySelectorAll('.toggle-password').forEach(item => {
         item.addEventListener('click', event => {
+            console.log("Eye icon clicked"); // Debugging
             const passwordFieldId = item.getAttribute('toggle');
             const eyeIcon = item.querySelector('i');
             togglePasswordVisibility(passwordFieldId, eyeIcon);
@@ -69,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const phoneNumber = document.getElementById("signup-phone").value;
         const password = document.getElementById("signup-password").value;
         const confirmPassword = document.getElementById("signup-confirm-password").value;
+        const securityQuestion = document.getElementById("signup-security-question").value;
+        const securityAnswer = document.getElementById("signup-security-answer").value;
 
         if (!validatePhoneNumber(phoneNumber)) {
             return;
@@ -90,7 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const raw = JSON.stringify({
             "phone_number": phoneNumber,
             "password": password,
-            "confirm_password": confirmPassword
+            "confirm_password": confirmPassword,
+            "security_question": securityQuestion,
+            "security_answer": securityAnswer
         });
 
         fetch('http://51.20.67.103:8080/sign-up', {
@@ -102,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.status === 200) {
                     displayErrorMessage("User is now registered!");
                 } else if (response.status === 500) {
-                    displayErrorMessage("Internal Server Error");
+                    displayErrorMessage("Phone number already exists. Please login instead.");
                 } else {
                     displayErrorMessage("An unexpected error occurred. Please try again later.");
                 }
@@ -135,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
             method: 'POST',
             headers: myHeaders,
             body: raw,
-            // credentials: 'include'
         })
             .then((response) => {
                 if (response.status === 200) {

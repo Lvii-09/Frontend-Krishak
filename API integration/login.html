@@ -40,6 +40,7 @@
                             <input type="password" id="login-password" placeholder="Password" required>
                             <span toggle="login-password" class="eye toggle-password"><i class="fa fa-eye"></i></span>
                         </div>
+                        <div class="pass-link"><a href="reset.html">Forgot password?</a></div>
                         <div class="field btn">
                             <div class="btn-layer"></div>
                             <input type="submit" value="Login" id="login-submit">
@@ -50,6 +51,21 @@
                     <form action="#" class="signup">
                         <div class="field">
                             <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="field">
+                            <select id="signup-security-question" required>
+                                <option value="" disabled selected>Select a security question</option>
+                                <option value="What is your mother's name?">What is your mother's name?</option>
+                                <option value="What was the name of your first pet?">What was the name of your first
+                                    pet?</option>
+                                <option value="What is your birth year?">What is your birth year?</option>
+                                <option value="What school did you attend?">What school did you attend?</option>
+                                <option value="What is the name of the place where you were born?">What is the name of
+                                    the place where you were born?</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <input type="text" id="signup-security-answer" placeholder="Answer" required>
                         </div>
                         <div class="field">
                             <input type="password" id="signup-password" placeholder="Password" required>

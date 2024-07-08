@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 5%;
+    height: 5%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content img {
+    margin-right: 20px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://cdn.pixabay.com/photo/2019/07/21/12/10/cow-4352623_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Header */
+.header {
+    background-color: #008000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.header h1 {
+    font-size: 2em;
+}
+
+/* Main */
+.main {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.wrapper {
+    overflow: hidden;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(163, 163, 163, 0.8);
+    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper .title-text {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.wrapper .title {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.form-inner {
+    display: flex;
+    justify-content: center;
+}
+
+.form-inner form {
+    width: 100%;
+}
+
+.field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+.field input,
+.field select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #fc83bb;
+}
+
+.field input[type="submit"] {
+    color: #fff;
+    border: none;
+    padding-left: 0;
+    margin-top: 10px;
+    cursor: pointer;
+    background: -webkit-linear-gradient(left, #568724, #3a7023, #10782f, #2db651);
+    transition: all 0.3s ease;
+}
+
+.field input[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+.wrapper .field i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #7a797e;
+    transition: color 0.3s ease;
+}
+
+.wrapper .field i:hover {
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.match-message {
+    color: green;
+    margin-top: 10px;
+}

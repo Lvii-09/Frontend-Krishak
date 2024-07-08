@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <img src="logo.png" alt="Krishak Agro Logo" class="logo">
+            <h1>Krishak Agro</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="wrapper">
+            <div class="title-text">
+                <div class="title reset">Reset Password</div>
+            </div>
+            <div class="form-container">
+                <div class="form-inner">
+                    <form action="#" class="reset">
+                        <div class="field">
+                            <input type="tel" id="reset-phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="field">
+                            <select id="reset-security-question" required>
+                                <option value="" disabled selected>Select a security question</option>
+                                <option value="What is your mother's name?">What is your mother's name?</option>
+                                <option value="What was the name of your first pet?">What was the name of your first
+                                    pet?</option>
+                                <option value="What is your birth year?">What is your birth year?</option>
+                                <option value="What school did you attend?">What school did you attend?</option>
+                                <option value="What is the name of the place where you were born?">What is the name of
+                                    the place where you were born?</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <input type="text" id="reset-security-answer" placeholder="Answer" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" id="reset-password" placeholder="New Password" required>
+                            <span toggle="reset-password" class="eye toggle-password"><i class="fa fa-eye"></i></span>
+                        </div>
+                        <div class="field">
+                            <input type="password" id="reset-confirm-password" placeholder="Confirm New Password"
+                                required>
+                            <span toggle="reset-confirm-password" class="eye toggle-password"><i
+                                    class="fa fa-eye"></i></span>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <input type="submit" value="Reset Password" id="reset-submit">
+                        </div>
+                        <div class="error-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Krishak Agro. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="reset.js"></script>
+</body>
+
+</html>

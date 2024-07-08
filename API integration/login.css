@@ -8,7 +8,8 @@
 
 img {
     width: 5%;
-    height: 5%;
+    height: auto;
+    /* Adjust height automatically based on width */
 }
 
 .header-content {
@@ -21,17 +22,14 @@ img {
     margin-right: 20px;
 }
 
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Adjust font-family to include Poppins */
     background-color: #f9f9f9;
     margin: 0;
-    /* Remove default body margin */
     min-height: 100vh;
-    /* Ensure the body fills the viewport */
     display: flex;
     flex-direction: column;
-    /* Arrange children vertically */
     background-image: url('https://cdn.pixabay.com/photo/2019/07/21/12/10/cow-4352623_1280.jpg');
     background-size: cover;
     background-position: center;
@@ -41,12 +39,10 @@ body {
 /* Header */
 .header {
     background-color: #008000;
-    /* Dark green header background */
     color: #fff;
     padding: 20px 0;
     text-align: center;
     transition: background-color 0.3s ease;
-    /* Add transition effect for smooth color change */
 }
 
 .header h1 {
@@ -58,7 +54,6 @@ body {
     position: relative;
     overflow: hidden;
     flex: 1;
-    /* Fill remaining vertical space */
 }
 
 /* Footer */
@@ -71,12 +66,9 @@ body {
 
 .wrapper {
     overflow: hidden;
-    max-width: 400px;
-    /* Adjust the width as needed */
+    max-width: 550px;
     margin: 0 auto;
-    /* Center horizontally */
     padding: 20px;
-    /* Add some padding */
     background: rgba(163, 163, 163, 0.8);
     border-radius: 15px;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
@@ -117,7 +109,6 @@ body {
     line-height: 48px;
     cursor: pointer;
     z-index: 1;
-    /* Ensure labels are above the slider tab */
     transition: all 0.6s ease;
 }
 
@@ -131,7 +122,6 @@ body {
     width: 50%;
     left: 0;
     z-index: -1;
-    /* Adjusted z-index to ensure it's behind the labels */
     border-radius: 15px;
     background: -webkit-linear-gradient(left, #568724, #3a7023, #10782f, #2db651);
     transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -183,9 +173,11 @@ input[type="radio"] {
     height: 50px;
     width: 100%;
     margin-top: 20px;
+    position: relative;
 }
 
-.form-inner form .field input {
+.form-inner form .field input,
+.form-inner form .field select {
     height: 100%;
     width: 100%;
     outline: none;
@@ -197,7 +189,8 @@ input[type="radio"] {
     transition: all 0.3s ease;
 }
 
-.form-inner form .field input:focus {
+.form-inner form .field input:focus,
+.form-inner form .field select:focus {
     border-color: #008000;
 }
 
@@ -275,11 +268,6 @@ form .btn input[type="submit"] {
     text-align: center;
 }
 
-/* Adjust the eye icon position within the password field */
-.form-inner form .field {
-    position: relative;
-}
-
 .form-inner form .field .eye {
     position: absolute;
     top: 50%;
@@ -289,8 +277,29 @@ form .btn input[type="submit"] {
     z-index: 1;
 }
 
-/* Adjust the eye icon size */
+/* Ensure eye icon is always visible */
 .form-inner form .field .eye i {
     font-size: 20px;
     color: #666;
+}
+
+/* Style for the security question select box */
+.form-inner form .field select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+.form-inner form .field select:focus {
+    border-color: #008000;
+}
+
+.form-inner form .field select option {
+    padding: 10px;
 }
