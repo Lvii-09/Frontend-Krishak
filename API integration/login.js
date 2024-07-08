@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         moveSliderToSignup();
         errorMessage.textContent = "";
     };
-
+    
     signupLink.addEventListener("click", handleSignupLinkClick);
 
     const moveSliderToLogin = () => {

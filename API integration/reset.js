@@ -1,6 +1,19 @@
-const togglePasswordIcons = document.querySelectorAll(".toggle-password");
+// Function to fetch security question based on phone number
+const fetchSecurityQuestion = async (phoneNumber) => {
+    try {
+        const response = await fetch(`http://51.20.67.103:8080/info/user?phoneNumber=${phoneNumber}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch security question. Please try again.");
+        }
+        const userInfo = await response.json();
+        return userInfo.securityQuestion;
+    } catch (error) {
+        throw new Error("Failed to fetch security question. Please try again.");
+    }
+};
 
 // Toggle visibility of password
+const togglePasswordIcons = document.querySelectorAll(".toggle-password");
 togglePasswordIcons.forEach(icon => {
     icon.addEventListener("click", () => {
         const passwordInput = document.querySelector(`#${icon.getAttribute("toggle")}`);
@@ -10,37 +23,34 @@ togglePasswordIcons.forEach(icon => {
     });
 });
 
-// Phone number validation
-document.getElementById("reset-phone").addEventListener("input", function () {
+// Phone number validation and fetch security question
+document.getElementById("reset-phone").addEventListener("input", async function () {
     const phone = this.value;
     const phonePattern = /^[6789]\d{9}$/;
     const errorMessage = document.querySelector(".error-message");
+    const securityQuestionSelect = document.getElementById("reset-security-question");
 
     if (!phonePattern.test(phone)) {
-        errorMessage.textContent = "Enter a valid phone number";
-    } else {
-        errorMessage.textContent = "";
+        errorMessage.textContent = "Phone number must start with 9, 8, 7, or 6 and be 10 digits long.";
+        securityQuestionSelect.innerHTML = '<option value="" disabled selected>Select a security question</option>';
+        return;
+    }
+
+    errorMessage.textContent = "";
+
+    try {
+        const securityQuestion = await fetchSecurityQuestion(phone);
+
+        // Clear previous options and add the fetched security question
+        securityQuestionSelect.innerHTML = '';
+        securityQuestionSelect.innerHTML += `<option value="${securityQuestion}">${securityQuestion}</option>`;
+    } catch (error) {
+        errorMessage.textContent = error.message;
+        securityQuestionSelect.innerHTML = '<option value="" disabled selected>Select a security question</option>';
     }
 });
 
-// Check if passwords match
-const passwordInput = document.getElementById("reset-password");
-const confirmPasswordInput = document.getElementById("reset-confirm-password");
-const matchMessage = document.createElement("div");
-matchMessage.className = "match-message";
-confirmPasswordInput.parentElement.appendChild(matchMessage);
-
-confirmPasswordInput.addEventListener("input", function () {
-    if (passwordInput.value === confirmPasswordInput.value) {
-        matchMessage.textContent = "Passwords match.";
-        matchMessage.style.color = "green";
-    } else {
-        matchMessage.textContent = "Passwords do not match.";
-        matchMessage.style.color = "red";
-    }
-});
-
-// Handle form submission for reset
+// Handle form submission for password reset
 const resetForm = document.querySelector("form.reset");
 resetForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -58,28 +68,41 @@ resetForm.addEventListener("submit", async (e) => {
         return;
     }
 
-    if (newPassword !== confirmPassword) {
-        errorMessage.textContent = "Passwords do not match.";
+    // Validate security answer against the retrieved security question
+    if (!securityQuestion || !securityAnswer) {
+        errorMessage.textContent = "Please enter both security question and answer.";
         return;
     }
 
-    const response = await fetch("/api/v1/auth/reset-password", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ phoneNumber: phone, securityQuestion: securityQuestion, securityAnswer: securityAnswer, newPassword: newPassword })
-    });
+    const body = {
+        phoneNumber: phone,
+        securityQuestion: securityQuestion,
+        securityAnswer: securityAnswer,
+        newPassword: newPassword
+    };
 
-    const data = await response.json();
+    try {
+        const response = await fetch('http://51.20.67.103:8080/reset-password', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        });
 
-    if (response.ok) {
-        alert("Password reset successful! Please login.");
-        console.log("Password reset successful:", data);
-        // Redirect to the login page after successful password reset
-        window.location.href = "index.html";
-    } else {
-        alert("Password reset failed. Please try again.");
-        console.error("Password reset failed:", data);
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Password reset successful! Please login.");
+            console.log("Password reset successful:", data);
+            // Redirect to the login page after successful password reset
+            window.location.href = "login.html";
+        } else {
+            alert("Password reset failed. Please try again.");
+            console.error("Password reset failed:", data);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        errorMessage.textContent = "An unexpected error occurred. Please try again later.";
     }
 });
