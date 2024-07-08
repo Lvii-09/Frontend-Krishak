@@ -1,12 +1,12 @@
 // Function to fetch security question based on phone number
 const fetchSecurityQuestion = async (phoneNumber) => {
     try {
-        const response = await fetch(`http://51.20.67.103:8080/info/user?phoneNumber=${phoneNumber}`);
+        const response = await fetch(`http://51.20.67.103:8080/admin/user?phoneNumber=${phoneNumber}`);
         if (!response.ok) {
             throw new Error("Failed to fetch security question. Please try again.");
         }
         const userInfo = await response.json();
-        return userInfo.securityQuestion;
+        return userInfo.security_question;  // Update to match the correct field name
     } catch (error) {
         throw new Error("Failed to fetch security question. Please try again.");
     }
@@ -93,7 +93,14 @@ resetForm.addEventListener("submit", async (e) => {
             body: JSON.stringify(body)
         });
 
-        const data = await response.json();
+        // Check the content type of the response
+        const contentType = response.headers.get("Content-Type");
+        let data;
+        if (contentType && contentType.includes("application/json")) {
+            data = await response.json();
+        } else {
+            data = await response.text();
+        }
 
         if (response.ok) {
             alert("Password reset successful! Please login.");
