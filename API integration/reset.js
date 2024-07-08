@@ -28,11 +28,11 @@ document.getElementById("reset-phone").addEventListener("input", async function 
     const phone = this.value;
     const phonePattern = /^[6789]\d{9}$/;
     const errorMessage = document.querySelector(".error-message");
-    const securityQuestionSelect = document.getElementById("reset-security-question");
+    const securityQuestionInput = document.getElementById("reset-security-question");
 
     if (!phonePattern.test(phone)) {
         errorMessage.textContent = "Phone number must start with 9, 8, 7, or 6 and be 10 digits long.";
-        securityQuestionSelect.innerHTML = '<option value="" disabled selected>Select a security question</option>';
+        securityQuestionInput.value = "";
         return;
     }
 
@@ -40,13 +40,10 @@ document.getElementById("reset-phone").addEventListener("input", async function 
 
     try {
         const securityQuestion = await fetchSecurityQuestion(phone);
-
-        // Clear previous options and add the fetched security question
-        securityQuestionSelect.innerHTML = '';
-        securityQuestionSelect.innerHTML += `<option value="${securityQuestion}">${securityQuestion}</option>`;
+        securityQuestionInput.value = securityQuestion;
     } catch (error) {
         errorMessage.textContent = error.message;
-        securityQuestionSelect.innerHTML = '<option value="" disabled selected>Select a security question</option>';
+        securityQuestionInput.value = "";
     }
 });
 
@@ -71,6 +68,12 @@ resetForm.addEventListener("submit", async (e) => {
     // Validate security answer against the retrieved security question
     if (!securityQuestion || !securityAnswer) {
         errorMessage.textContent = "Please enter both security question and answer.";
+        return;
+    }
+
+    // Validate new password and confirm password match
+    if (newPassword !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match.";
         return;
     }
 
