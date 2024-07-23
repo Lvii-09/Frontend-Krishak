@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const errorMessage = document.querySelector(".error-message");
     const sliderTab = document.querySelector(".slider-tab");
 
+    const correctTokenId = "Kri#5555@Agro!";
+
     const displayErrorMessage = (message) => {
         errorMessage.textContent = message;
     };
@@ -40,9 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const togglePasswordVisibility = (passwordFieldId, eyeIcon) => {
-        console.log("Password field ID:", passwordFieldId);
         const passwordField = document.getElementById(passwordFieldId);
-        console.log("Password field:", passwordField);
         if (!passwordField) {
             console.error("Password field not found!");
             return;
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Attach event listeners to toggle password visibility
     document.querySelectorAll('.toggle-password').forEach(item => {
         item.addEventListener('click', event => {
-            console.log("Eye icon clicked"); // Debugging
             const passwordFieldId = item.getAttribute('toggle');
             const eyeIcon = item.querySelector('i');
             togglePasswordVisibility(passwordFieldId, eyeIcon);
@@ -71,12 +70,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const handleSignup = () => {
         const phoneNumber = document.getElementById("signup-phone").value;
+        const token = document.getElementById("signup-token").value;
         const password = document.getElementById("signup-password").value;
         const confirmPassword = document.getElementById("signup-confirm-password").value;
         const securityQuestion = document.getElementById("signup-security-question").value;
         const securityAnswer = document.getElementById("signup-security-answer").value;
 
         if (!validatePhoneNumber(phoneNumber)) {
+            return;
+        }
+
+        if (!token) {
+            displayErrorMessage("Please enter your token ID.");
+            return;
+        }
+
+        if (token !== correctTokenId) {
+            displayErrorMessage("Invalid token ID.");
             return;
         }
 
@@ -95,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const raw = JSON.stringify({
             "phone_number": phoneNumber,
+            "token": token,
             "password": password,
             "confirm_password": confirmPassword,
             "security_question": securityQuestion,
