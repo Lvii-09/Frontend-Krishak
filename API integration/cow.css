@@ -1,3 +1,4 @@
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +9,6 @@ img {
     width: 5%;
     height: 5%;
 }
-
 
 .header-content {
     display: flex;
@@ -67,12 +67,10 @@ body {
     margin-top: 40px;
 }
 
-/* Centering section titles */
 .form-section .section-title {
     text-align: center;
 }
 
-/* Form label */
 label {
     display: block;
     margin-bottom: 10px;
@@ -80,8 +78,14 @@ label {
     color: #333;
 }
 
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
 table {
     width: 100%;
+    table-layout: fixed; /* Ensure table cells adjust to fit within the width */
     border-collapse: collapse;
     margin-bottom: 20px;
 }
@@ -91,6 +95,9 @@ td {
     padding: 10px;
     text-align: center;
     border: 2px solid #008000;
+    overflow: hidden; /* Hide overflowed content */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 th {
@@ -162,14 +169,6 @@ button i {
     background-color: #006400;
 }
 
-#resetButton i {
-    margin-right: 5px;
-}
-
-#resetButton {
-    margin-right: 775px;
-}
-
 .home-button {
     background-color: #008000;
     color: #fff;
@@ -196,6 +195,7 @@ button i {
     color: #fff;
     text-align: center;
     padding: 20px 0;
+    margin-top: auto; /* Ensure footer is at the bottom */
 }
 
 .popup {
@@ -249,7 +249,8 @@ button i {
     border-radius: 5px;
 }
 
-.backward-btn {
+.backward-btn,
+.forward-btn {
     background-color: #008000;
     color: #fff;
     padding: 12px 24px;
@@ -258,11 +259,76 @@ button i {
     cursor: pointer;
 }
 
-.forward-btn {
-    background-color: #008000;
-    color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Media Queries for 414x896 Mobile Devices */
+@media (max-width: 414px) {
+    .header-content img {
+        width: 15%; /* Adjust logo size for mobile phones */
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .form-section {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    input[type="number"],
+    input[type="text"],
+    input[type="tel"],
+    select {
+        padding: 10px;
+    }
+
+    button,
+    #resetButton,
+    .home-button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .pagination {
+        flex-direction: column;
+    }
+
+    .page-info {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    /* Ensure table fits within screen */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed; /* Ensure table cells adjust to fit within the width */
+    }
+
+    table th,
+    table td {
+        padding: 8px;
+        font-size: 14px;
+        word-wrap: break-word; /* Ensure text wraps within the cells */
+    }
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .header-content img {
+        width: 10%; /* Increase logo size for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content img {
+        width: 15%; /* Further increase logo size for phones */
+    }
 }

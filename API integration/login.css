@@ -9,7 +9,6 @@
 img {
     width: 5%;
     height: auto;
-    /* Adjust height automatically based on width */
 }
 
 .header-content {
@@ -24,7 +23,6 @@ img {
 
 body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Adjust font-family to include Poppins */
     background-color: #f9f9f9;
     margin: 0;
     min-height: 100vh;
@@ -277,7 +275,6 @@ form .btn input[type="submit"] {
     z-index: 1;
 }
 
-/* Ensure eye icon is always visible */
 .form-inner form .field .eye i {
     font-size: 20px;
     color: #666;
@@ -302,4 +299,80 @@ form .btn input[type="submit"] {
 
 .form-inner form .field select option {
     padding: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .wrapper {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .wrapper .title {
+        font-size: 28px;
+    }
+
+    .slide-controls .slide {
+        font-size: 16px;
+        line-height: 40px;
+    }
+
+    .form-inner form .field input,
+    .form-inner form .field select {
+        font-size: 15px;
+    }
+
+    .form-inner form .btn input[type="submit"] {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .wrapper {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .wrapper .title {
+        font-size: 24px;
+    }
+
+    .slide-controls {
+        height: 40px;
+    }
+
+    .slide-controls .slide {
+        font-size: 14px;
+        line-height: 38px;
+    }
+
+    .form-inner form .field input,
+    .form-inner form .field select {
+        font-size: 14px;
+    }
+
+    .form-inner form .btn input[type="submit"] {
+        font-size: 16px;
+    }
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .header-content img {
+        width: 10%; /* Increase logo size for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content img {
+        width: 15%; /* Further increase logo size for phones */
+    }
 }

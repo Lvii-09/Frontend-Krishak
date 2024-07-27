@@ -50,76 +50,72 @@
                 </div>
             </section>
 
-            <div class="container">
-                <section id="newRecordsSection" class="form-section">
-                    <h2 class="section-title">New Records</h2>
-                    <form id="newRecordsForm">
-                        <table>
-                            <tr>
-                                <td><label for="Date">Date:</label></td>
-                                <td>
-                                    <input type="date" id="Date" name="Date" required autocomplete="off" max="{{ today | date:'dd-MM-yyyy' }}">
-                                </td>
-                            </tr>                          
-                            <tr>
-                                <td><label for="sukha">सुखा चारा (KG):</label></td>
-                                <td><input type="number" id="sukha" name="sukha" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="haraChara">हरा चारा (KG):</label></td>
-                                <td><input type="number" id="haraChara" name="haraChara" required autocomplete="off">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label for="khal">खल (KG):</label></td>
-                                <td><input type="number" id="khal" name="khal" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="choori">चूरी (KG):</label></td>
-                                <td><input type="number" id="choori" name="choori" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="others">अन्य (KG):</label></td>
-                                <td><input type="number" id="others" name="others" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="krishakFeed">Krishak Feed (KG):</label></td>
-                                <td><input type="number" id="krishakFeed" name="krishakFeed" required
-                                        autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="doodh">दूध (Qt):</label></td>
-                                <td><input type="number" id="doodh" name="doodh" required autocomplete="off"></td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="fat">FAT:</label></td>
-                                <td><input type="text" id="fat" name="fat" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="snf">SNF:</label></td>
-                                <td><input type="text" id="snf" name="snf" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="gobar">गोबर:</label></td>
-                                <td><input type="text" id="gobar" name="gobar" required autocomplete="off"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><label for="comment">Comment:</label></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-                                </td>
-                            </tr>
-
-                        </table>
+            <section id="newRecordsSection" class="form-section">
+                <h2 class="section-title">New Records</h2>
+                <form id="newRecordsForm">
+                    <table>
+                        <tr>
+                            <td><label for="Date">Date:</label></td>
+                            <td>
+                                <input type="date" id="Date" name="Date" required autocomplete="off"
+                                    max="{{ today | date:'dd-MM-yyyy' }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="sukha">सुखा चारा (KG):</label></td>
+                            <td><input type="number" id="sukha" name="sukha" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="haraChara">हरा चारा (KG):</label></td>
+                            <td><input type="number" id="haraChara" name="haraChara" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="khal">खल (KG):</label></td>
+                            <td><input type="number" id="khal" name="khal" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="choori">चूरी (KG):</label></td>
+                            <td><input type="number" id="choori" name="choori" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="others">अन्य (KG):</label></td>
+                            <td><input type="number" id="others" name="others" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="krishakFeed">Krishak Feed (KG):</label></td>
+                            <td><input type="number" id="krishakFeed" name="krishakFeed" required autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="doodh">दूध (Qt):</label></td>
+                            <td><input type="number" id="doodh" name="doodh" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="fat">FAT:</label></td>
+                            <td><input type="number" id="fat" name="fat" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="snf">SNF:</label></td>
+                            <td><input type="number" id="snf" name="snf" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gobar">गोबर:</label></td>
+                            <td><input type="text" id="gobar" name="gobar" required autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><label for="comment">Comment:</label></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><textarea id="comment" name="comment" rows="4"></textarea></td>
+                        </tr>
+                    </table>
+                    <div class="button-container">
                         <button type="button" id="submitButton"><i class="fas fa-arrow-right"></i> Submit</button>
                         <button type="button" id="resetButton"><i class="fas fa-undo"></i> Reset</button>
-                        <a href="ka.html" class="fas fa-home home-button">Home</a>
-
-                    </form>
-                </section>
-            </div>
+                        <a href="ka.html" class="home-button"><i class="fas fa-home"></i> Home</a>
+                    </div>
+                </form>
+            </section>
         </div>
     </main>
 
