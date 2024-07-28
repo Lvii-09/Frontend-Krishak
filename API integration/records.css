@@ -36,12 +36,10 @@ body {
 
 .header {
     background-color: #008000;
-    /* Dark green header background */
     color: #fff;
     padding: 20px 0;
     text-align: center;
     transition: background-color 0.3s ease;
-    /* Add transition effect for smooth color change */
 }
 
 .header h1 {
@@ -56,7 +54,6 @@ body {
     position: relative;
     overflow: hidden;
     flex: 1;
-    /* Fill remaining vertical space */
 }
 
 .background-image {
@@ -71,35 +68,31 @@ body {
 
 .section-title {
     color: #008000;
-    /* Dark green section title */
     margin-bottom: 20px;
     text-align: center;
 }
 
 .form-section {
     background-color: rgba(230, 230, 230, 0.771);
-    /* Semi-transparent white background */
     padding: 20px;
-    /* Reduced padding for better fit */
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     margin: 40px auto;
-    /* Center the form section and space from the header */
     max-width: 100%;
-    /* Ensure it doesn't exceed container width */
     overflow: hidden;
-    /* Ensure no overflow from form section */
 }
 
 .table-container {
     overflow-x: auto;
-    /* Allow horizontal scrolling */
+    overflow-y: auto;
+    max-height: 400px; /* Adjust this value to control the height */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    min-width: 1200px; /* Add this to force horizontal scroll */
 }
 
 th,
@@ -116,14 +109,10 @@ th {
 
 td:first-child {
     padding-right: 10px;
-    /* Adjust the padding as needed */
     text-align: left;
-    /* Align text to the left within the first column */
     white-space: nowrap;
-    /* Prevent the date from wrapping onto multiple lines */
 }
 
-/* Table look for the last 5 records */
 #oldRecordsTable tbody tr:nth-last-child(-n+5) {
     background-color: #f2f2f2;
 }
@@ -132,7 +121,6 @@ input[type="number"],
 input[type="text"],
 input[type="date"] {
     width: calc(100% - 24px);
-    /* Adjusted width to accommodate border and padding */
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -144,7 +132,6 @@ input[type="number"]:focus,
 input[type="text"]:focus,
 input[type="date"]:focus {
     border-color: #1abc9c;
-    /* Light green color on focus */
 }
 
 input[type="text"]::-webkit-inner-spin-button,
@@ -154,18 +141,15 @@ input[type="text"]::-webkit-outer-spin-button {
 
 textarea {
     width: 100%;
-    /* Full width of container */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: vertical;
-    /* Allow vertical resizing */
 }
 
 #submitButton,
 #resetButton {
     background-color: #008000;
-    /* Dark green button background */
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -181,21 +165,17 @@ textarea {
 #submitButton i,
 #resetButton i {
     margin-right: 5px;
-    /* Space between icon and text */
 }
 
 .home-button {
     background-color: #008000;
-    /* Dark green button background */
     color: #fff;
     padding: 12px 24px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    /* Remove underline from anchor tag */
     display: inline-flex;
-    /* Align icon and text */
     align-items: center;
 }
 
@@ -206,7 +186,6 @@ textarea {
 .button-container {
     display: flex;
     justify-content: space-between;
-    /* Space out the buttons */
     margin-top: 20px;
 }
 
@@ -214,14 +193,12 @@ textarea {
     display: none;
 }
 
-/* Footer */
 .footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
     margin-top: auto;
-    /* Push the footer to the bottom */
 }
 
 .popup {
@@ -238,9 +215,7 @@ textarea {
 }
 
 .popup.auto-fade {
-    /* Add CSS for auto-fade effect */
     animation: fadeOut 1s forwards;
-    /* Use CSS animation for fade-out effect */
 }
 
 @keyframes fadeOut {
@@ -256,15 +231,12 @@ textarea {
 
 .success {
     color: #008000;
-    /* Dark green color for success message */
 }
 
 .error {
     color: #ff0000;
-    /* Red color for error message */
 }
 
-/* New CSS for pagination and button alignment */
 .pagination {
     display: flex;
     justify-content: space-between;
@@ -276,19 +248,14 @@ textarea {
     font-size: 13px;
     font-weight: bold;
     color: #fff;
-    /* Text color */
     background-color: #008000;
-    /* Background color */
     padding: 12px 24px;
-    /* Adjust padding as needed */
     border-radius: 5px;
-    /* Rounded corners */
 }
 
 .backward-btn,
 .forward-btn {
     background-color: #008000;
-    /* Dark green button background */
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -298,10 +265,8 @@ textarea {
 
 #resetButton {
     margin-right: 10px;
-    /* Adjust margin between buttons */
 }
 
-/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .header-content img {
         width: 60px;
@@ -315,30 +280,14 @@ textarea {
 
     .table-container {
         overflow-x: scroll;
-        /* Allow horizontal scrolling on mobile devices */
     }
 
     #oldRecordsTable {
         min-width: 600px;
-        /* Ensure table width is greater than the container width for scrolling */
     }
 
     #oldRecordsTable th,
     #oldRecordsTable td {
         white-space: nowrap;
-        /* Prevent cell content from wrapping */
-    }
-}
-
-/* Media Queries for Mobile Devices */
-@media (max-width: 768px) {
-    .header-content img {
-        width: 60px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-content img {
-        width: 50px;
     }
 }
