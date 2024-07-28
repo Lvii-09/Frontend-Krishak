@@ -6,8 +6,8 @@
 }
 
 img {
-    width: 5%;
-    height: 5%;
+    width: 100%;
+    height: auto;
 }
 
 .header-content {
@@ -18,6 +18,7 @@ img {
 
 .header-content img {
     margin-right: 20px;
+    max-width: 60px; /* Ensure logo doesn't get too large */
 }
 
 .header {
@@ -29,7 +30,7 @@ img {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f9f9f9;
     margin: 0;
     min-height: 100vh;
@@ -52,16 +53,16 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* Adjust padding for smaller screens */
 }
 
 /* Form section */
 .form-section {
     background-color: rgba(230, 230, 230, 0.771);
-    padding: 40px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     margin: auto;
     margin-top: 40px;
@@ -69,6 +70,7 @@ body {
 
 .form-section .section-title {
     text-align: center;
+    font-size: 1.5em;
 }
 
 label {
@@ -78,26 +80,30 @@ label {
     color: #333;
 }
 
+/* Table container */
 .table-container {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 table {
     width: 100%;
-    table-layout: fixed; /* Ensure table cells adjust to fit within the width */
+    min-width: 300px;
+    table-layout: fixed;
     border-collapse: collapse;
-    margin-bottom: 20px;
 }
 
 th,
 td {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
-    border: 2px solid #008000;
-    overflow: hidden; /* Hide overflowed content */
-    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
-    white-space: nowrap; /* Prevent text from wrapping */
+    border: 1px solid #008000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px; /* Default font size for desktop */
 }
 
 th {
@@ -106,7 +112,7 @@ th {
 }
 
 td:first-child {
-    padding-right: 10px;
+    padding-right: 8px;
     text-align: left;
     white-space: nowrap;
 }
@@ -119,7 +125,7 @@ input[type="number"],
 input[type="text"],
 input[type="tel"],
 select {
-    width: calc(100% - 24px);
+    width: 100%;
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -142,10 +148,11 @@ input[type="text"]::-webkit-outer-spin-button {
 button {
     background-color: #008000;
     color: #fff;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
@@ -159,10 +166,11 @@ button i {
 #resetButton {
     background-color: #008000;
     color: #fff;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 #resetButton:hover {
@@ -172,11 +180,12 @@ button i {
 .home-button {
     background-color: #008000;
     color: #fff;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    font-size: 16px;
 }
 
 .home-button:hover {
@@ -195,7 +204,7 @@ button i {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    margin-top: auto; /* Ensure footer is at the bottom */
+    margin-top: auto;
 }
 
 .popup {
@@ -219,6 +228,7 @@ button i {
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
         display: none;
@@ -241,11 +251,11 @@ button i {
 }
 
 .page-info {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     color: #fff;
     background-color: #008000;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 
@@ -253,20 +263,21 @@ button i {
 .forward-btn {
     background-color: #008000;
     color: #fff;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 /* Media Queries for 414x896 Mobile Devices */
 @media (max-width: 414px) {
     .header-content img {
-        width: 15%; /* Adjust logo size for mobile phones */
+        width: 50px; /* Adjust logo size for mobile phones */
     }
 
     .header h1 {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
     .container {
@@ -274,22 +285,24 @@ button i {
     }
 
     .form-section {
-        padding: 20px;
+        padding: 10px;
         border-radius: 8px;
+        width: 100%;
     }
 
     input[type="number"],
     input[type="text"],
     input[type="tel"],
     select {
-        padding: 10px;
+        padding: 8px;
     }
 
     button,
     #resetButton,
     .home-button {
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 8px 16px;
+        font-size: 12px;
+        width: 100%;
     }
 
     .pagination {
@@ -297,38 +310,38 @@ button i {
     }
 
     .page-info {
-        font-size: 12px;
+        font-size: 10px;
         padding: 8px 16px;
     }
 
-    /* Ensure table fits within screen */
     .table-container {
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        display: block;
     }
 
     table {
         width: 100%;
-        table-layout: fixed; /* Ensure table cells adjust to fit within the width */
+        min-width: 100%;
     }
 
-    table th,
-    table td {
+    th,
+    td {
         padding: 8px;
-        font-size: 14px;
-        word-wrap: break-word; /* Ensure text wraps within the cells */
+        font-size: 12px; /* Adjust font size only for mobile */
     }
 }
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .header-content img {
-        width: 10%; /* Increase logo size for tablets */
+        width: 60px;
     }
 }
 
 @media (max-width: 480px) {
     .header-content img {
-        width: 15%; /* Further increase logo size for phones */
+        width: 50px;
     }
 }

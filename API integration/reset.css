@@ -22,7 +22,7 @@ img {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f9f9f9;
     margin: 0;
     min-height: 100vh;
@@ -52,6 +52,7 @@ body {
     position: relative;
     overflow: hidden;
     flex: 1;
+    padding: 20px;
 }
 
 /* Footer */
@@ -62,9 +63,10 @@ body {
     padding: 20px 0;
 }
 
+/* Wrapper for forms */
 .wrapper {
     overflow: hidden;
-    max-width: 550px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     background: rgba(163, 163, 163, 0.8);
@@ -86,6 +88,7 @@ body {
     text-align: center;
 }
 
+/* Form container */
 .form-container {
     width: 100%;
     overflow: hidden;
@@ -100,6 +103,7 @@ body {
     width: 100%;
 }
 
+/* Field styles */
 .field {
     height: 50px;
     width: 100%;
@@ -161,4 +165,59 @@ body {
 .match-message {
     color: green;
     margin-top: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .wrapper .title {
+        font-size: 28px;
+    }
+
+    .field input,
+    .field select {
+        font-size: 16px;
+    }
+
+    .field input[type="submit"] {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    img {
+        width: 25%;
+        height: auto;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-content img {
+        width: 15%;
+    }
+
+    .wrapper {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .wrapper .title {
+        font-size: 24px;
+    }
+
+    .field input,
+    .field select {
+        font-size: 14px;
+    }
+
+    .field input[type="submit"] {
+        font-size: 14px;
+        padding: 8px;
+    }
 }
