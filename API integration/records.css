@@ -82,17 +82,10 @@ body {
     overflow: hidden;
 }
 
-.table-container {
-    overflow-x: auto;
-    overflow-y: auto;
-    max-height: 400px; /* Adjust this value to control the height */
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    min-width: 1200px; /* Add this to force horizontal scroll */
 }
 
 th,
@@ -267,6 +260,7 @@ textarea {
     margin-right: 10px;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     .header-content img {
         width: 60px;
@@ -278,16 +272,31 @@ textarea {
         width: 50px;
     }
 
-    .table-container {
-        overflow-x: scroll;
+    table {
+        font-size: 0.8em;
+        /* Reduce font size for better fit */
     }
 
+    th,
+    td {
+        padding: 8px;
+        /* Reduce padding for smaller screens */
+    }
+
+    /* Adjust the old records table specifically */
     #oldRecordsTable {
-        min-width: 600px;
+        width: 100%;
     }
 
-    #oldRecordsTable th,
+    #oldRecordsTable th {
+        white-space: nowrap;
+        padding: 1.5px;
+        font-size: 5px;
+    }
+
     #oldRecordsTable td {
         white-space: nowrap;
+        padding: 1.5px;
+        font-size: 7px;
     }
 }
