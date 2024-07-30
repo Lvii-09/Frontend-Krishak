@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%; /* Ensure html and body take up full height */
-}
-
 img {
     width: 5%;
     height: 5%;
