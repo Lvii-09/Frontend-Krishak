@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: myHeaders,
             body: raw
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                // No need to parse response.json() here if you don't need to access the JSON body
-                console.log('Submit Form Data Result:', response.statusText); // Log response status text
-                alert("Cattle registered successfully!");
-                // window.location.href = 'ka.html';
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('Submit Form Data Result:', response.statusText); // Log response status text
+            alert("Cattle registered successfully!");
+            displayOldCattle(currentPage); // Refresh the records table
+            form.reset(); // Reset the form after submission
             })
             .catch((error) => {
                 console.error('Submit Form Data Error:', error);
